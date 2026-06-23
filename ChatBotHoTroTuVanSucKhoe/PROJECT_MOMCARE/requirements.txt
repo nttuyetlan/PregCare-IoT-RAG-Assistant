@@ -1,0 +1,54 @@
+# ============================================
+# Mầm Nhỏ - Edge AI Obstetric Assistant
+# Python Dependencies (pinned for ARM64)
+# ============================================
+
+# --- Core Framework ---
+pydantic>=2.0,<3.0
+pydantic-settings>=2.0,<3.0
+loguru>=0.7.0,<1.0
+
+# --- LLM Inference (CPU, GGUF) ---
+llama-cpp-python>=0.2.50,<0.3.0
+
+# --- Vector Database ---
+chromadb>=0.4.0,<0.5.0
+
+# --- Embeddings ---
+sentence-transformers>=2.2.0,<3.0
+
+# --- Speech-to-Text ---
+faster-whisper>=1.0.0,<2.0.0
+ctranslate2>=4.0.0,<5.0.0
+
+# --- Text-to-Speech ---
+piper-tts>=1.2.0,<2.0.0
+
+# --- Voice Pipeline ---
+# pipecat-ai>=0.0.30    # Uncomment when pipecat ARM64 wheel is available
+
+# --- IoT / API ---
+fastapi>=0.100.0,<1.0.0
+uvicorn[standard]>=0.23.0,<1.0.0
+
+# --- Audio Hardware (PyAudio + Playback) ---
+PyAudio>=0.2.11,<1.0.0        # Mic input & speaker output (requires: sudo apt install portaudio19-dev python3-dev)
+pygame>=2.1.0,<3.0.0          # MP3 playback fallback (for gTTS)
+
+# --- Speech Recognition (STT) ---
+SpeechRecognition>=3.10,<4.0  # Google Speech Recognition (online STT)
+
+# --- Text-to-Speech (TTS) ---
+gtts>=2.3.0,<3.0.0            # Google TTS (online mode fallback)
+
+# --- Audio Processing ---
+numpy>=1.24.0,<2.0.0
+soundfile>=0.12.0,<1.0.0
+
+# --- Utilities ---
+psutil>=5.9.0,<6.0.0
+
+# --- Testing ---
+pytest>=7.0.0,<8.0.0
+pytest-asyncio>=0.21.0,<1.0.0
+httpx>=0.24.0,<1.0.0

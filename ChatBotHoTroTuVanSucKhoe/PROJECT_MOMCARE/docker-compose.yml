@@ -1,0 +1,79 @@
+# ============================================
+# Mầm Nhỏ — Docker Compose cho Orange Pi 5
+# ============================================
+# Hướng dẫn:
+#   1. Copy toàn bộ project vào Orange Pi 5
+#   2. Tải models: python scripts/download_models.py
+#   3. Chạy check_audio: python scripts/check_audio.py
+#   4. Cập nhật AUDIO_*_DEVICE_INDEX trong .env
+#   5. docker-compose up -d
+#   6. docker-compose logs -f  (xem logs)
+# ============================================
+
+services:
+  # ── Service chính: Trợ lý giọng nói ──
+  mam-nho-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile.arm64
+    container_name: mam_nho_assistant
+    restart: unless-stopped
+
+    # Truyền thiết bị âm thanh (mic + speaker) từ Orange Pi 5
+    # /dev/snd chứa tất cả ALSA devices (card 0, 1, 2...)
+    devices:
+      - "/dev/snd:/dev/snd"
+
+    # Cần privileged để truy cập hardware audio
+    privileged: true
+
+    # Thêm group audio để container truy cập ALSA
+    group_add:
+      - audio
+
+    volumes:
+      # Mount thư mục models (6GB+, không bake vào image)
+      - ./models:/app/models:ro
+
+      # Mount vector_db (có thể rebuild bên trong container)
+      - ./vector_db:/app/vector_db
+
+      # Mount logs ra ngoài để xem/backup
+      - ./logs:/app/logs
+
+      # Mount data (JSONL + SQLite kick counter DB)
+      - ./data:/app/data
+
+      # Mount TTS cache
+      - ./tts_cache:/app/tts_cache
+
+      # Mount ALSA config từ host (nếu có custom config)
+      - /etc/asound.conf:/etc/asound.conf:ro
+
+    environment:
+      - PYTHONIOENCODING=utf-8
+      - KMP_DUPLICATE_LIB_OK=TRUE
+      - OMP_NUM_THREADS=4
+      # Audio device index cho es8388 (hw:2,0)
+      # Chạy "python scripts/check_audio.py" trong container để xác nhận
+      - AUDIO_INPUT_DEVICE_INDEX=${AUDIO_INPUT_DEVICE_INDEX:--1}
+      - AUDIO_OUTPUT_DEVICE_INDEX=${AUDIO_OUTPUT_DEVICE_INDEX:--1}
+
+    # Cho phép nhập liệu từ terminal (ENTER để thu âm)
+    stdin_open: true
+    tty: true
+
+    # Network: cho phép ESP32 gọi API kick counter
+    ports:
+      - "7860:7860"   # Gradio Web Demo
+
+    # Giới hạn RAM để bảo vệ hệ thống
+    # Orange Pi 5 có 8-16GB RAM, Mầm Nhỏ cần ~4-5GB
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+        reservations:
+          memory: 3G
+
+

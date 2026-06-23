@@ -1,0 +1,74 @@
+# =====================================================================
+# 📂 GITIGNORE FOR PREGCARE SYSTEM (FIRMWARE & CHATBOT BACKEND)
+# =====================================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+.eggs/
+
+# --- Environment & Configuration Secrets ---
+.env
+.env*.local
+.env.development
+.env.production
+PROJECT_MOMCARE/.env
+ChatBotHoTroTuVanSucKhoe/PROJECT_MOMCARE/.env
+
+# --- Arduino/ESP32 Credential Files ---
+Code_VongTay/secrets.h
+Code_VongTay/credentials_config.h
+**/secrets.h
+
+# --- Local Databases & Large Model Weights (Critical) ---
+PROJECT_MOMCARE/models/
+PROJECT_MOMCARE/vector_db/
+PROJECT_MOMCARE/logs/
+*.db
+*.sqlite
+
+# --- Audio Temp logs ---
+PROJECT_MOMCARE/logs/*.wav
+PROJECT_MOMCARE/logs/*.mp3
+PROJECT_MOMCARE/logs/*.txt
+
+# --- Arduino/ESP32 Compilation & IDEs ---
+Code_VongTay/build/
+Code_VongTay/libraries/
+*.hex
+*.elf
+*.bin
+.arduino/
+.pio/
+.pioenvs/
+
+# --- Large Archives & Media ---
+*.zip
+*.tar.gz
+*.rar
+*.7z
+health_app_ver2.zip
+
+# --- Editors and IDEs ---
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*~
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+desktop.ini

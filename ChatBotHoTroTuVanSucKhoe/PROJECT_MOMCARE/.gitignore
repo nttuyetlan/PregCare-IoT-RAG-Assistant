@@ -1,0 +1,37 @@
+# Mầm Nhỏ - Edge AI Obstetric Assistant
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Models (too large for git)
+models/
+
+# Database
+vector_db/
+*.db
+
+# Logs
+logs/
+
+# Environment
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db

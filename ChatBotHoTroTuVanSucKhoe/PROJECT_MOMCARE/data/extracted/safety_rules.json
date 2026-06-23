@@ -1,0 +1,164 @@
+{
+  "version": "momcare_safety_rules_v1",
+  "created_at": "2026-05-16T07:40:25",
+  "source": {
+    "source_id": "dvcsskss",
+    "doc_title": "Hướng dẫn quốc gia về các dịch vụ chăm sóc sức khỏe sinh sản",
+    "decision": "4128/QĐ-BYT ngày 29/07/2016",
+    "pdf_file": "dvcsskss_48201712.pdf",
+    "pdf_pages_used": [
+      51,
+      52,
+      84,
+      87,
+      90,
+      141,
+      142,
+      143,
+      144,
+      145
+    ]
+  },
+  "policy": {
+    "rule_layer_position": "run_before_rag_and_llm",
+    "must_not_do": [
+      "không chẩn đoán bệnh",
+      "không kê thuốc",
+      "không hướng dẫn tự xử trí cấp cứu chuyên môn tại nhà"
+    ],
+    "default_emergency_action": "khuyên liên hệ bác sĩ hoặc đến cơ sở y tế gần nhất ngay"
+  },
+  "rules": [
+    {
+      "id": "preg_redflag_bleeding",
+      "level": "emergency",
+      "category": "pregnancy_or_postpartum_red_flag",
+      "keywords": [
+        "ra máu",
+        "chảy máu âm đạo",
+        "xuất huyết âm đạo",
+        "băng huyết",
+        "chảy máu sau đẻ"
+      ],
+      "source_quote_summary": "Tài liệu liệt kê chảy máu âm đạo/chảy máu sau đẻ là tình huống cấp cứu sản khoa cần phát hiện, xử trí và chuyển tuyến.",
+      "response_template": "Mẹ ơi, ra máu hoặc chảy máu âm đạo trong thai kỳ/sau sinh là dấu hiệu cần được kiểm tra trực tiếp. Mẹ nên liên hệ bác sĩ hoặc đến cơ sở y tế gần nhất ngay."
+    },
+    {
+      "id": "preg_redflag_severe_abdominal_pain",
+      "level": "emergency",
+      "category": "pregnancy_or_postpartum_red_flag",
+      "keywords": [
+        "đau bụng dữ dội",
+        "đau bụng nhiều",
+        "đau quặn bụng",
+        "đau bụng dưới nhiều"
+      ],
+      "source_quote_summary": "Tài liệu liệt kê đau bụng dữ dội là một tình huống cấp cứu sản khoa.",
+      "response_template": "Mẹ ơi, đau bụng dữ dội trong thai kỳ hoặc sau sinh có thể là dấu hiệu nguy hiểm. Mẹ nên đi khám ngay để được kiểm tra an toàn."
+    },
+    {
+      "id": "preg_redflag_breathing",
+      "level": "emergency",
+      "category": "respiratory_red_flag",
+      "keywords": [
+        "khó thở",
+        "thở gấp",
+        "tím tái",
+        "suy hô hấp",
+        "đau ngực"
+      ],
+      "source_quote_summary": "Tài liệu liệt kê khó thở/suy hô hấp là tình huống cấp cứu, cần đánh giá và xử trí kịp thời.",
+      "response_template": "Mẹ ơi, khó thở, tím tái hoặc đau ngực là dấu hiệu nguy hiểm. Mẹ nên gọi người nhà hỗ trợ và đến cơ sở y tế ngay."
+    },
+    {
+      "id": "preg_redflag_seizure_coma",
+      "level": "emergency",
+      "category": "neurological_red_flag",
+      "keywords": [
+        "co giật",
+        "hôn mê",
+        "lú lẫn",
+        "không tỉnh",
+        "mất ý thức"
+      ],
+      "source_quote_summary": "Tài liệu liệt kê co giật/hôn mê là cấp cứu sản khoa.",
+      "response_template": "Mẹ ơi, co giật, hôn mê hoặc mất ý thức là tình huống cấp cứu. Gia đình cần đưa mẹ đến cơ sở y tế ngay hoặc gọi cấp cứu."
+    },
+    {
+      "id": "preg_redflag_high_fever",
+      "level": "urgent",
+      "category": "infection_or_fever_red_flag",
+      "keywords": [
+        "sốt cao",
+        "sốt 40",
+        "sốt trên 40",
+        "sốt nhiều",
+        "nhiệt độ cao"
+      ],
+      "source_quote_summary": "Tài liệu định nghĩa sốt cao là sốt ≥ 40°C và liệt kê sốt cao trong nhóm cấp cứu sản khoa.",
+      "response_template": "Mẹ ơi, sốt cao trong thai kỳ hoặc sau sinh cần được theo dõi cẩn thận. Mẹ nên liên hệ bác sĩ hoặc đi khám sớm, không tự ý dùng thuốc khi chưa có hướng dẫn."
+    },
+    {
+      "id": "preg_redflag_preeclampsia_signs",
+      "level": "urgent",
+      "category": "preeclampsia_warning_signs",
+      "keywords": [
+        "nhức đầu",
+        "đau đầu dữ dội",
+        "hoa mắt",
+        "nhìn mờ",
+        "phù",
+        "đái ít",
+        "tiểu ít",
+        "tăng huyết áp"
+      ],
+      "source_quote_summary": "Trong tư vấn cho phụ nữ có thai, tài liệu nêu dấu hiệu bất thường như đau bụng, ra máu, nhức đầu, phù, đái ít; các nội dung tiền sản giật/tăng huyết áp nằm trong phần bất thường thai nghén.",
+      "response_template": "Mẹ ơi, đau đầu nhiều, nhìn mờ, phù, tiểu ít hoặc huyết áp tăng có thể là dấu hiệu cần khám sớm trong thai kỳ. Mẹ nên liên hệ bác sĩ để được kiểm tra trực tiếp."
+    },
+    {
+      "id": "preg_redflag_shock",
+      "level": "emergency",
+      "category": "shock_or_circulation_red_flag",
+      "keywords": [
+        "xanh tái",
+        "vã mồ hôi",
+        "chân tay lạnh",
+        "mạch nhanh",
+        "huyết áp tụt",
+        "ngất",
+        "choáng"
+      ],
+      "source_quote_summary": "Tài liệu mô tả sốc sản khoa với các dấu hiệu như xanh tái, vã mồ hôi, chân tay lạnh, mạch nhanh nhỏ, huyết áp hạ.",
+      "response_template": "Mẹ ơi, dấu hiệu choáng, ngất, tay chân lạnh, vã mồ hôi hoặc huyết áp tụt là tình huống nguy hiểm. Gia đình nên đưa mẹ đi cấp cứu ngay."
+    },
+    {
+      "id": "postpartum_redflag_lower_abdominal_pain_fever",
+      "level": "urgent",
+      "category": "postpartum_warning_signs",
+      "keywords": [
+        "sốt sau sinh",
+        "đau bụng dưới sau sinh",
+        "sản dịch hôi",
+        "đau bụng dưới"
+      ],
+      "source_quote_summary": "Phần chăm sóc 6 tuần đầu sau đẻ yêu cầu hỏi các bất thường như sốt và đau bụng dưới.",
+      "response_template": "Mẹ ơi, sốt hoặc đau bụng dưới sau sinh cần được kiểm tra, đặc biệt nếu kèm sản dịch bất thường. Mẹ nên liên hệ cơ sở y tế để được hướng dẫn."
+    },
+    {
+      "id": "newborn_redflag_general",
+      "level": "urgent",
+      "category": "newborn_warning_signs",
+      "keywords": [
+        "trẻ bỏ bú",
+        "bú kém",
+        "khó thở ở trẻ",
+        "rốn có mủ",
+        "vàng da nhiều",
+        "sốt ở trẻ sơ sinh",
+        "trẻ tím tái"
+      ],
+      "source_quote_summary": "Phần chăm sóc sau sinh yêu cầu theo dõi bú mẹ, thở, thân nhiệt, da, rốn và phát hiện tình trạng bệnh lý ở trẻ sơ sinh.",
+      "response_template": "Mẹ ơi, trẻ sơ sinh bú kém, khó thở, tím tái, rốn có mủ, sốt hoặc vàng da nhiều cần được nhân viên y tế kiểm tra sớm."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-05-16T07:40:25",
+  "raw_pdfs": {
+    "ddphunucothai": "/mnt/data/momcare_rag_dataset/data/raw_pdfs/ddphunucothai_48201712.pdf",
+    "dvcsskss": "/mnt/data/momcare_rag_dataset/data/raw_pdfs/dvcsskss_48201712.pdf"
+  },
+  "counts": {
+    "pages_extracted": 532,
+    "chunks_all": 237,
+    "chunks_for_chroma": 225,
+    "chunks_excluded_or_safety_only": 12,
+    "safety_rules": 9
+  },
+  "chunks_for_chroma_by_source": {
+    "ddphunucothai": 148,
+    "dvcsskss": 77
+  },
+  "chunks_for_chroma_by_topic": {
+    "tam_quan_trong_dinh_duong": 13,
+    "nhu_cau_dinh_duong": 9,
+    "nhu_cau_dinh_duong_va_vi_chat": 20,
+    "sua_va_che_pham_sua": 9,
+    "tang_can_va_bmi_thai_ky": 15,
+    "che_do_an_thai_ky": 8,
+    "dinh_duong_benh_ly_thai_ky": 40,
+    "tu_van_dinh_duong": 12,
+    "phu_luc_nhu_cau_dinh_duong": 22,
+    "cham_soc_truoc_sinh": 43,
+    "cham_soc_sau_sinh": 14,
+    "cham_soc_so_sinh": 12,
+    "nuoi_con_bang_sua_me_va_kangaroo": 8
+  },
+  "note": "Created ChromaDB collection momcare_knowledge_hashing with offline HashingVectorizer embeddings. For better semantic Vietnamese retrieval, rebuild with scripts/build_chroma.py using intfloat/multilingual-e5-base.",
+  "chroma": {
+    "path": "data/chroma_db",
+    "ready_collection": "momcare_knowledge_hashing",
+    "ready_embedding": "sklearn HashingVectorizer 768-dim word 1-2gram",
+    "semantic_rebuild_script": "scripts/build_chroma.py",
+    "semantic_embedding": "intfloat/multilingual-e5-base"
+  }
+}

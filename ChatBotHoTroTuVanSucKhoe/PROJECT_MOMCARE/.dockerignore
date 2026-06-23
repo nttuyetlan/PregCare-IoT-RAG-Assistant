@@ -1,0 +1,44 @@
+# ============================================
+# Mầm Nhỏ — Docker Ignore
+# ============================================
+
+# Models (6GB+, mount as volume instead)
+models/
+
+# Vector DB (rebuild inside container)
+vector_db/
+
+# Logs
+logs/
+
+# Cache
+tts_cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Environment (use .env.example instead)
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual environment
+.venv/
+venv/
+
+# Test artifacts
+test_piper.wav
+
+# Database files (will be created at runtime)
+*.db
